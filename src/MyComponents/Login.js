@@ -14,11 +14,13 @@ export const Login = () => {
   const [passwordLog, setPasswordLog] = useState("");
   const [flag, setFlag] = useState("");
   const [home, setHome] = useState(true);
+  let username = localStorage.getItem("Username");
 
   function handleLogin(e) {
     e.preventDefault();
     let email = localStorage.getItem("Email").replace(/"/g, "");
     let password = localStorage.getItem("Password").replace(/"/g, "");
+    
 
     if (!emailLog || !passwordLog) {
       setFlag(true);
@@ -80,7 +82,7 @@ export const Login = () => {
         )}
       </form>
       ):(
-        <Welcome/>
+        <Welcome name={username}/>
       )}
     </div>
   );
